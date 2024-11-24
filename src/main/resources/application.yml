@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3307/LIBRARY?
+    url: jdbc:mysql://localhost:3307/gong-gu?
          useSSL=false
          &allowPublicKeyRetrieval=true
          &serverTimeZone=Asia/Seoul
@@ -9,8 +9,8 @@ spring:
          &profileSQL=false
          &logger=Slf4JLogger
          &maxQuerySizeToLog=999999
-    username: library
-    password: 120407
+    username: gonggu
+    password: gonggu
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:

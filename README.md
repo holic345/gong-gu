@@ -6,8 +6,26 @@
 - Mysql 8
 - JPA
 - Redis
----
 
+---
+Database DCL
+
+    use mysql;
+
+    create database gonggu;
+    
+    show databases;
+    
+    create user gonggu@'%' identified by 'gonggu';
+    
+    select user, host from user;
+    
+    grant all on *.* to gonggu@'%';
+    
+    flush privileges;
+    
+    show grants for gonggu@'%';
+---
 ### Git 커밋 메세지 규칙 <br>
 - feat : 새로운 기능에 대한 커밋<br>
 - fix : 버그 수정에 대한 커밋<br>
