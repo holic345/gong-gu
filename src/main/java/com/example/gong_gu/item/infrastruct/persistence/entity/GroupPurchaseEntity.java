@@ -3,12 +3,20 @@ package com.example.gong_gu.item.infrastruct.persistence.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+<<<<<<< HEAD
+=======
+import jakarta.persistence.FetchType;
+>>>>>>> 8bf67595761e7b43e76835e9888400f22f8e46f0
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+<<<<<<< HEAD
 import jakarta.persistence.OneToMany;
+=======
+import jakarta.persistence.ManyToOne;
+>>>>>>> 8bf67595761e7b43e76835e9888400f22f8e46f0
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,11 +25,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Getter @Builder
+@Getter @Builder @ToString
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "GROUP_PURCHASE")
@@ -32,8 +41,9 @@ public class GroupPurchaseEntity {
     @Column(name = "`key`", columnDefinition = "bigint", nullable = false)
     private Long key;
 
-    @Column(name = "item_key", columnDefinition = "bigint", nullable = false)
-    private Long itemKey;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_key", referencedColumnName = "`key`", foreignKey = @ForeignKey(name = "FK_GROUP_PURCHASE_TO_ITEM"))
+    private ItemEntity item;
 
     @Column(name = "requried_participants", columnDefinition = "int", nullable = false)
     private Integer requiredParticipants;
@@ -51,4 +61,13 @@ public class GroupPurchaseEntity {
     @OneToMany
     @JoinColumn(name = "group_purchase_key", referencedColumnName = "`key`", foreignKey = @ForeignKey(name = "FK_GROUP_PURCHASE_TO_GROUP_PURCHASE_PARTICIPANT"))
     private List<GroupPurchaseParticipantEntity> groupPurchaseParticipants;
+
+    /**
+     * @apiNote 양방향 매핑 메서드
+     * @param item
+     */
+    public void mappingItem(ItemEntity item) {
+        this.item = item;
+    }
+
 }

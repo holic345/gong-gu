@@ -1,14 +1,18 @@
 spring:
+  config:
+    activate:
+      on-profile: test
+
   datasource:
-    url: jdbc:mysql://localhost:3307/gonggu?
-         useSSL=false
-         &allowPublicKeyRetrieval=true
-         &serverTimeZone=Asia/Seoul
-         &characterEncoding=UTF-8
-         &rewriteBatchedStatements=true
-         &profileSQL=false
-         &logger=Slf4JLogger
-         &maxQuerySizeToLog=999999
+    url: jdbc:mysql://localhost:3307/gonggu_test?
+      useSSL=false
+      &allowPublicKeyRetrieval=true
+      &serverTimeZone=Asia/Seoul
+      &characterEncoding=UTF-8
+      &rewriteBatchedStatements=true
+      &profileSQL=false
+      &logger=Slf4JLogger
+      &maxQuerySizeToLog=999999
     username: gonggu
     password: gonggu
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -21,6 +25,7 @@ spring:
         dialect: org.hibernate.dialect.MySQLDialect
         format_sql: false
         show_sql: false
+        default_batch_fetch_size: 100
 
   cache:
     type: redis
@@ -30,6 +35,7 @@ spring:
       host: localhost
       port: 6379
 
+# spring 에서 제공하는 Slf4j, Log4j2 와 같은 로깅 라이브러리를 통해 파일이나 콘솔에 출력하는 방식을 제어
 logging:
   level:
     org.hibernate:

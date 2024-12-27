@@ -32,6 +32,8 @@ dependencies {
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
+	implementation 'org.hibernate.orm:hibernate-core:6.2.0.CR2'
+
 	// @ConfigurationProperties library
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
@@ -52,9 +54,6 @@ dependencies {
 	// mapstruct library (mapstruct library 는 lombok 보다 아래에 위치 - 롬복 어노테이션과 충돌 방지)
 	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
 	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
-
-	// https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core
-	implementation 'org.hibernate.orm:hibernate-core:6.5.2.Final'
 
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
